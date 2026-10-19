@@ -1,0 +1,15 @@
+# The repository's checks as one package at the root. The content is files, not code: the package has
+# no library or binary of its own, only the tests in `tests/` that hold the content to `docs/format.md`.
+[package]
+name = "bmo-persona"
+description = "The persona layers and the lore library, as files, with the checks that hold them to their format."
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dev-dependencies]
+# The inventory's tables are markdown, read by a markdown parser; the index lines and tone lines are this
+# repository's own syntax, read by pattern; the manifest is TOML.
+pulldown-cmark = { version = "0.13.4", default-features = false }
+regex = "1.13.1"
+toml = { version = "0.8.23", default-features = false, features = ["parse"] }
