@@ -44,10 +44,10 @@ fn every_tone_line_names_a_tone_layer_or_none() {
 
 #[test]
 fn the_tone_line_reads_as_the_format_says() {
-  assert_eq!(tone("tone: bmo\n\n# A room").as_deref(), Some("bmo"));
+  assert_eq!(tone("tone: warm\n\n# A room").as_deref(), Some("warm"));
   assert_eq!(tone("\n  tone:\tnone \n").as_deref(), Some("none"));
-  assert_eq!(tone("tone:cynical").as_deref(), Some("cynical"));
-  assert_eq!(tone("# A room\ntone: bmo"), None);
+  assert_eq!(tone("tone:plain").as_deref(), Some("plain"));
+  assert_eq!(tone("# A room\ntone: warm"), None);
   assert_eq!(tone("tone: two words"), None);
-  assert_eq!(tone("Tone: bmo"), None);
+  assert_eq!(tone("Tone: warm"), None);
 }

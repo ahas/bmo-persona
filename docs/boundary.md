@@ -9,6 +9,9 @@ source tree's persona and lore goes.
   server, exposes no API, calls no unit and depends on no other repository.
 - **No unit's code reads this repository or its paths.** What a unit needs of the content reaches it as a
   copy a deployment places in that unit's own tree, or through another unit's API.
+- **The persona and the lore are bound for the chat agent's brain database,** which then serves them to
+  their readers through its own API; that move is the brain's own work, and this repository does not know
+  the brain. Until the brain serves them, the copies below are how each unit receives the content.
 - **The content is versioned** by `VERSION`, in semantic versioning. A change to anything `format.md` states
   is a major version; a change to the content alone is a minor one.
 
