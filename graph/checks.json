@@ -1,0 +1,24 @@
+[
+  {
+    "id": "checks/repository",
+    "title": "Repository checks",
+    "what": "The tests that hold the content to its format and the inventory, and the repository to its rules: no personal value by shape, no Hangul in code, registry dependencies only, one manifest, one version. Lives in tests/.",
+    "files": [
+      "tests/support/mod.rs",
+      "tests/inventory.rs",
+      "tests/personal.rs",
+      "tests/hangul.rs",
+      "tests/dependencies.rs",
+      "tests/layout.rs",
+      "Cargo.toml",
+      "testbed.toml"
+    ],
+    "symbols": [],
+    "aliases": [],
+    "needs": [
+      "content/layers",
+      "content/lore"
+    ],
+    "base": "f7171a5d17100ba39dc38df0e066f3c14ecacbb4"
+  }
+]
