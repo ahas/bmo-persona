@@ -7,9 +7,13 @@ use std::path::{Path, PathBuf};
 
 use support::{ROOT, files_under, shown};
 
-/// The Hangul syllables block, U+AC00 to U+D7A3, named by code point so this file holds none of it.
+/// The Hangul syllables block's first and last code points, U+AC00 and U+D7A3, as numbers: an escape
+/// would name a non-English letter, and the code holds none.
+const FIRST_SYLLABLE: u32 = 0xAC00;
+const LAST_SYLLABLE: u32 = 0xD7A3;
+
 fn is_hangul(c: char) -> bool {
-  ('\u{AC00}'..='\u{D7A3}').contains(&c)
+  (FIRST_SYLLABLE..=LAST_SYLLABLE).contains(&(c as u32))
 }
 
 /// Each line of `text` holding Hangul, as `path:line`.

@@ -10,8 +10,10 @@ languages = ["cargo"]
 
 [check]
 # The sweeps that read the tree before anything runs: the README's folder table, the dependencies the
-# manifest names, Korean in the code and dashes in text for a person. The ledger is the Korean allowed per
-# code file; it allows none. The content is no code and keeps its own language.
+# manifest names, letters that are not English in the code, and dashes in text for a person. The ledger
+# is the lines holding such a letter allowed per code file, whether written as itself or named by an
+# escape; it allows none. A code point is written as a number, which names no letter. The content is no
+# code and keeps its own language.
 quick = ["layout", "dependencies", "korean", "dashes"]
 korean_ledger = "korean-ledger.json"
 # The repository depends on no other unit, the base libraries included.
