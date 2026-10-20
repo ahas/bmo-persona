@@ -54,7 +54,8 @@ statement, and in short:
   ASCII letters, digits and hyphens, joined by dots.
 - **Only the documented keys appear:** `owner.name` and `owner.id` in any layer, and in a room layer
   `room.title`, `person-<n>.name`, `person-<n>.id`, `person-<n>.called`, `person-<n>.age`,
-  `person-<n>.relation`, `bot-<n>.id` and `bot-<n>.handle`, where `<n>` is a number from one.
+  `person-<n>.relation`, `bot-<n>.name`, `bot-<n>.id` and `bot-<n>.handle`, where `<n>` is a number
+  from one.
 - **A placeholder stands for the exact text it replaced.** Filling every placeholder in a layer with its value
   gives back the layer as its reader read it before, byte for byte.
 - **A reader never sees a placeholder.** The deployment fills them in before the layers reach their reader

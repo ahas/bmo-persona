@@ -177,6 +177,7 @@ Six files beside these are left where they are. `<agent>` stands for another cha
 | `person-<n>.called` | what that person is called, with any alternative named beside it |
 | `person-<n>.age` | that person's age relative to someone else in the room |
 | `person-<n>.relation` | that person's relationship to the owner and place in the room |
+| `bot-<n>.name` | the name the bot sharing the room goes by |
 | `bot-<n>.id` | the chat platform account id of another bot sharing the room |
 | `bot-<n>.handle` | that bot's chat platform handle |
 
@@ -214,17 +215,23 @@ way over all 79 files, holds none and is copied unchanged.
 | `layers/rooms/room-b.md` | 14 | `person-3.name`, `person-3.id`, `person-3.called`, `owner.name`, `person-3.age` |
 | `layers/rooms/room-b.md` | 15 | `person-4.name`, `person-4.id`, `person-4.called`, `owner.name`, `person-4.age` |
 | `layers/rooms/room-b.md` | 16 | `person-5.name`, `person-5.id`, `person-5.called`, `owner.name`, `person-5.age` |
-| `layers/rooms/room-b.md` | 17 | `bot-1.id` |
-| `layers/rooms/room-b.md` | 21 | `bot-1.handle` |
-| `layers/rooms/room-b.md` | 24 | `owner.name` |
+| `layers/rooms/room-b.md` | 17 | `bot-1.name` twice, `bot-1.id` |
+| `layers/rooms/room-b.md` | 19 | `bot-1.name` |
+| `layers/rooms/room-b.md` | 21 | `bot-1.name`, `bot-1.handle` |
+| `layers/rooms/room-b.md` | 22 | `bot-1.name` twice |
+| `layers/rooms/room-b.md` | 24 | `owner.name`, `bot-1.name` twice |
+| `layers/rooms/room-b.md` | 25 | `bot-1.name` |
+| `layers/rooms/room-b.md` | 27 | `bot-1.name` three times |
+| `layers/rooms/room-b.md` | 29 | `bot-1.name` |
+| `layers/rooms/room-b.md` | 30 | `bot-1.name` twice |
 | `layers/rooms/room-b.md` | 31 | `bot-1.handle` |
 | `layers/rooms/room-c.md` | 3 | `room.title` |
 | `layers/rooms/room-c.md` | 10 | `owner.name` twice, `owner.id` |
 | `layers/rooms/room-c.md` | 11 | `person-1.name`, `person-1.id`, `person-1.called` |
 | `layers/rooms/room-d.md` | none | its room id was only in its file name |
 
-- **What stays:** the chat platform's name; the names of the agents, which are the persona's own
-  registration data; and the name another bot in a room goes by, which is that bot's registration and
-  how its messages are told apart. Fictional characters of the lore are content, not people.
+- **What stays:** the chat platform's name and the names of the agents, which are the persona's own
+  registration data. A bot sharing a room goes by a placeholder like its people, so neither its name nor
+  its handle is written here. Fictional characters of the lore are content, not people.
 - **Outside the content,** in code, tests, `README.md`, `CLAUDE.md` and `docs/`, no agent is named and
   no personal value appears.

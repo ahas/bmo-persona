@@ -17,7 +17,7 @@ the format its readers rely on, and a deployment places it where those readers l
 | `.graph/` | The code dependency graph: one node per feature with its files and what it reads, written only by `bmo graph` |
 
 At the root stand the Cargo manifest of the checks, the version, `testbed.toml` with its Korean ledger,
-`rustfmt.toml` and `CLAUDE.md`.
+`rustfmt.toml`, the MIT `LICENSE` and `CLAUDE.md`.
 
 ## Documents
 

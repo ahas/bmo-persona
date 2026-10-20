@@ -15,7 +15,7 @@ const EVERY_LAYER: [&str; 2] = ["owner.name", "owner.id"];
 /// fields, numbered from one.
 static ROOM_KEY: LazyLock<Regex> = LazyLock::new(|| {
   Regex::new(
-    r"^(?:room\.title|person-[1-9][0-9]*\.(?:name|id|called|age|relation)|bot-[1-9][0-9]*\.(?:id|handle))$",
+    r"^(?:room\.title|person-[1-9][0-9]*\.(?:name|id|called|age|relation)|bot-[1-9][0-9]*\.(?:name|id|handle))$",
   )
   .expect("a room key")
 });
@@ -53,7 +53,11 @@ fn only_documented_placeholders_appear() {
 fn the_rules_name_what_they_should() {
   assert!(wrong("layers/base.md", "Calls {{owner.name}}, id {{owner.id}}.").is_empty());
   assert!(
-    wrong("layers/rooms/room-a.md", "# {{room.title}}\n{{person-12.called}} {{bot-1.handle}}").is_empty()
+    wrong(
+      "layers/rooms/room-a.md",
+      "# {{room.title}}\n{{person-12.called}} {{bot-1.name}} {{bot-1.handle}}"
+    )
+    .is_empty()
   );
   assert_eq!(wrong("layers/base.md", "{{room.title}}"), ["layers/base.md: room.title"]);
   assert_eq!(
@@ -63,6 +67,10 @@ fn the_rules_name_what_they_should() {
   assert_eq!(
     wrong("layers/rooms/room-a.md", "{{person-1.email}}"),
     ["layers/rooms/room-a.md: person-1.email"]
+  );
+  assert_eq!(
+    wrong("layers/rooms/room-a.md", "{{bot-1.email}}"),
+    ["layers/rooms/room-a.md: bot-1.email"]
   );
   assert_eq!(wrong("lore/index.md", "{{owner.name}}"), ["lore/index.md: owner.name"]);
   assert_eq!(
