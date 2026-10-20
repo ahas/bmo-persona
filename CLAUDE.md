@@ -6,8 +6,8 @@ These rules hold every change to this repository.
 
 - `docs/` is the canonical statement of what the repository holds and how it is read: `docs/format.md`
   for the shape of the layers, the lore index and the placeholders, `docs/boundary.md` for who receives
-  the content and how, and `docs/inventory.md` for every file, where it comes from and what replaced its
-  personal values.
+  the content and how, `docs/inventory.md` for every file, where it comes from and what replaced its
+  personal values, and `docs/PERSONAL-DATA.md` for the values that never enter the repository.
 - A change that would make a document wrong or incomplete repairs the document first, stating what is
   true now, and the content or the checks are changed to match. A file added, removed or renamed is
   added to, removed from or renamed in the inventory in the same commit.
@@ -33,8 +33,8 @@ These rules hold every change to this repository.
   testbed's `korean` check hold this.
 - **No personal data anywhere.** A personal value in the content is a placeholder whose value the
   deployment keeps (`docs/format.md`, 「Placeholders」); the personal-value check in `tests/` holds the
-  shapes such a value takes. Outside the content no agent is named, and no user, home directory or
-  machine either.
+  shapes such a value takes, and `docs/PERSONAL-DATA.md` states the rule. Outside the content no agent
+  is named, and no user, home directory or machine either.
 
 ## Layout
 

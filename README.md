@@ -26,6 +26,7 @@ At the root stand the Cargo manifest of the checks, the version, `testbed.toml` 
 | `docs/format.md` | The shape of the layers and their tone line, the lore index and its chunks, and the placeholders |
 | `docs/boundary.md` | What the repository offers, how a deployment places it, which unit receives what, and where each reader of the source tree goes |
 | `docs/inventory.md` | Every content file with its source and path, what was left out, and every placeholder that replaced a personal value |
+| `docs/PERSONAL-DATA.md` | The values that never enter the repository, the two it allows, and the check that holds them |
 
 ## Version
 

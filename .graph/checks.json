@@ -2,7 +2,7 @@
   {
     "id": "checks/repository",
     "title": "Repository checks",
-    "what": "The tests that hold the content to its format and the inventory, and the repository to its rules: no personal value, no Hangul in code, registry dependencies only, one manifest, one version. Lives in tests/, declared by testbed.toml.",
+    "what": "The tests that hold the content to its format and the inventory, and the repository to its rules: no personal value described in docs/PERSONAL-DATA.md, no Hangul in code, registry dependencies only, one manifest, one version. Lives in tests/, declared by testbed.toml.",
     "files": [
       "tests/support/mod.rs",
       "tests/inventory.rs",
@@ -10,6 +10,7 @@
       "tests/hangul.rs",
       "tests/dependencies.rs",
       "tests/layout.rs",
+      "docs/PERSONAL-DATA.md",
       "Cargo.toml",
       "testbed.toml",
       "korean-ledger.json",
@@ -19,7 +20,7 @@
     "symbols": [],
     "aliases": [],
     "needs": [],
-    "base": "c0d5cb53f5139143ba2a219fded26f86c4ae8689",
-    "changed": 1792506704547
+    "base": "abb4c6295b35166445d7f9d8ffc178a46335fadf",
+    "changed": 1792527433851
   }
 ]

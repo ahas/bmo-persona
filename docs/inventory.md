@@ -234,4 +234,4 @@ way over all 79 files, holds none and is copied unchanged.
   registration data. A bot sharing a room goes by a placeholder like its people, so neither its name nor
   its handle is written here. Fictional characters of the lore are content, not people.
 - **Outside the content,** in code, tests, `README.md`, `CLAUDE.md` and `docs/`, no agent is named and
-  no personal value appears.
+  no personal value appears, apart from the owner's handle and address that `PERSONAL-DATA.md` allows.
