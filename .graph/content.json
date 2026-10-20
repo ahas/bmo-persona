@@ -14,8 +14,8 @@
     "symbols": [],
     "aliases": [],
     "needs": [],
-    "base": "7052874b38f138378ac7a45f283422a0abf562ce",
-    "changed": 1792497680902
+    "base": "c0d5cb53f5139143ba2a219fded26f86c4ae8689",
+    "changed": 1792506704544
   },
   {
     "id": "content/lore",
@@ -31,7 +31,7 @@
     "symbols": [],
     "aliases": [],
     "needs": [],
-    "base": "7052874b38f138378ac7a45f283422a0abf562ce",
-    "changed": 1792497682941
+    "base": "c0d5cb53f5139143ba2a219fded26f86c4ae8689",
+    "changed": 1792506709029
   }
 ]
