@@ -1,0 +1,7 @@
+repository = "bmo-persona"
+base = false
+
+[coverage]
+# The repository is content and its checks. Its one Cargo package holds only tests, which coverage leaves
+# out, and has no src/, so no file stands in the coverage scope and none is listed as unindexed.
+layout = "bmo-next"

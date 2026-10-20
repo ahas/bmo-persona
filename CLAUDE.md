@@ -41,9 +41,8 @@ These rules hold every change to this repository.
 - One Cargo package at the root holding only the checks, no other build tool's manifest, and no
   directory named after its parent; the layout check in `tests/` holds these.
 - The content lives in `layers/` and `lore/`; the checks live in `tests/`.
-- **`graph/` is the code dependency graph**, written only by `bmo graph` run with `BMO_SOURCE_DIR` naming
-  this checkout. A commit that adds, moves or removes a node's files brings its node along in the same
-  commit.
+- **`.graph/` is the code dependency graph**, written only by `bmo graph` in this checkout. A commit that
+  adds, moves or removes a node's files brings its node along in the same commit.
 
 ## The stages of a change
 

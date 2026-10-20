@@ -1,0 +1,37 @@
+[
+  {
+    "id": "content/layers",
+    "title": "Persona layers",
+    "what": "The base persona, the tone layers and the room layers a chat agent carries, with personal values as placeholders a deployment fills in. Lives in layers/, its format in docs/format.md and its receivers in docs/boundary.md.",
+    "files": [
+      "layers/",
+      "docs/format.md",
+      "docs/boundary.md",
+      "docs/inventory.md",
+      "tests/layers.rs",
+      "tests/placeholders.rs"
+    ],
+    "symbols": [],
+    "aliases": [],
+    "needs": [],
+    "base": "7052874b38f138378ac7a45f283422a0abf562ce",
+    "changed": 1792497680902
+  },
+  {
+    "id": "content/lore",
+    "title": "Lore library",
+    "what": "The lore index, its chunks and the source documents they are cut from, offered to a chat agent as reference pieces. Lives in lore/, its index grammar in docs/format.md and its receivers in docs/boundary.md.",
+    "files": [
+      "lore/",
+      "docs/format.md",
+      "docs/boundary.md",
+      "docs/inventory.md",
+      "tests/lore.rs"
+    ],
+    "symbols": [],
+    "aliases": [],
+    "needs": [],
+    "base": "7052874b38f138378ac7a45f283422a0abf562ce",
+    "changed": 1792497682941
+  }
+]
