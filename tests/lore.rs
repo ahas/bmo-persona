@@ -6,7 +6,8 @@ mod support;
 use std::collections::BTreeSet;
 use std::path::Path;
 
-use support::{Entry, ROOT, entries, entry_lines, files_under, is_slug, read};
+use bmo_persona::content::{Entry, entries, entry_lines, is_slug};
+use support::{ROOT, files_under, read};
 
 fn chunk_slugs() -> BTreeSet<String> {
   files_under(&Path::new(ROOT).join("lore/chunks"))

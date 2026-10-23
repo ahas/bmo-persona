@@ -18,9 +18,11 @@ These rules hold every change to this repository.
 
 - **The repository is content, not a service.** It runs no server, exposes no API and calls no unit. No
   unit's code reads it by its path: a deployment copies the content into the tree of the unit that reads
-  it (`docs/boundary.md`).
-- **Dependencies:** registry crates for the checks, and nothing from another repository, the base
-  libraries included. The dependency check in `tests/` holds this.
+  it, and the installer writes it as a brain file the operator injects (`docs/boundary.md`).
+- **The installer knows the brain file's shape and nothing else of the brain.** It writes the tables with
+  SQLite directly, as the brain's boundary states them, and takes no crate of the brain's.
+- **Dependencies:** registry crates for the installer and the checks, and nothing from another
+  repository, the base libraries included. The dependency check in `tests/` holds this.
 - **No hand-written parser for a general format.** Markdown and TOML are read by a maintained library;
   the index lines, tone lines and placeholders are this repository's own syntax and are read by pattern.
 
@@ -38,9 +40,9 @@ These rules hold every change to this repository.
 
 ## Layout
 
-- One Cargo package at the root holding only the checks, no other build tool's manifest, and no
-  directory named after its parent; the layout check in `tests/` holds these.
-- The content lives in `layers/` and `lore/`; the checks live in `tests/`.
+- One Cargo package at the root holding the installer and the checks, no other build tool's manifest,
+  and no directory named after its parent; the layout check in `tests/` holds these.
+- The content lives in `layers/` and `lore/`; the installer lives in `src/`; the checks live in `tests/`.
 - **`.graph/` is the code dependency graph**, written only by `bmo graph` in this checkout. A change that
   adds, moves or removes a node's files brings its node up to date in the checkout. Its area files are
   generated and untracked, so a fresh checkout builds them again, while `settings.toml` is the repository's
@@ -48,7 +50,8 @@ These rules hold every change to this repository.
 
 ## The stages of a change
 
-1. **Writing:** for the checks, the only check is `cargo check --all-targets`; for the content, none.
+1. **Writing:** for the installer and the checks, the only check is `cargo check --all-targets`; for the
+   content, none.
 2. **Review:** read the whole diff against the document governing it, then `cargo fmt --check` and
    `cargo clippy --all-targets -- -D warnings`.
 3. **Verification:** the test targets touched, then `cargo test` once, output written to a file and the

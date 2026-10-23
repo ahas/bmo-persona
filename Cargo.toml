@@ -1,16 +1,22 @@
-# The repository's checks as one package at the root. The content is files, not code: the package has
-# no library or binary of its own, only the tests in `tests/` that hold the content to `docs/format.md`.
+# The installer and the repository's checks as one package at the root. The content is files, not code:
+# the library reads it as `docs/format.md` states and writes it as a brain file, the one binary is the
+# installer (`docs/boundary.md`, 「The brain file」), and the tests in `tests/` hold the content to the format.
 [package]
 name = "bmo-persona"
 description = "The persona layers and the lore library, as files, with the checks that hold them to their format."
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 license = "MIT"
 publish = false
 
-[dev-dependencies]
-# The inventory's tables are markdown, read by a markdown parser; the index lines and tone lines are this
-# repository's own syntax, read by pattern; the manifest is TOML.
+[dependencies]
+# The index's sections are markdown headings, read by a markdown parser; the index lines and tone lines are
+# this repository's own syntax, read by pattern; the brain file is SQLite, its labels JSON.
 pulldown-cmark = { version = "0.13.4", default-features = false }
 regex = "1.13.1"
+rusqlite = { version = "0.32.1", features = ["bundled"] }
+serde_json = "1.0.132"
+
+[dev-dependencies]
+# The manifest is TOML; the inventory's tables are markdown, read by the parser above.
 toml = { version = "0.8.23", default-features = false, features = ["parse"] }

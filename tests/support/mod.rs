@@ -1,5 +1,5 @@
-//! What the tests share: the root, the walk over the repository's files, and the content's own syntax as
-//! `docs/format.md` states it.
+//! What the tests share: the root, the walk over the repository's files, and the placeholder's syntax. The
+//! rest of the content's own syntax is read by the library the installer reads it with.
 
 // Each test file is its own crate and uses only part of this module.
 #![allow(dead_code)]
@@ -67,64 +67,6 @@ pub fn content_files() -> Vec<PathBuf> {
 pub fn read(relative: &str) -> String {
   let path = Path::new(ROOT).join(relative);
   fs::read_to_string(&path).unwrap_or_else(|error| panic!("{relative} reads: {error}"))
-}
-
-/// One lore index entry.
-#[derive(Debug, PartialEq, Eq)]
-pub struct Entry {
-  pub slug: String,
-  pub scope: Option<String>,
-  pub title: String,
-  pub position: usize,
-}
-
-/// An index line: a dash and a space, the slug, an optional bracketed scope tag, then an em dash between
-/// white space and the title to the end of the line.
-static ENTRY: LazyLock<Regex> = LazyLock::new(|| {
-  Regex::new(r"^- ([a-z0-9-]+)(?:\s+(\[[^\]]*\]))?\s+\u{2014}\s+(.+)$").expect("an index line")
-});
-
-/// Every line of `index` that is an entry, in order, slug and all, duplicates included.
-pub fn entry_lines(index: &str) -> Vec<String> {
-  index
-    .lines()
-    .filter_map(|line| ENTRY.captures(line).map(|found| found[1].to_owned()))
-    .collect()
-}
-
-/// The entries of `index` as a reader takes them: the first line with a slug wins, positions count the
-/// kept entries from zero, and a line of any other shape is skipped.
-pub fn entries(index: &str) -> Vec<Entry> {
-  let mut kept: Vec<Entry> = Vec::new();
-  for line in index.lines() {
-    let Some(found) = ENTRY.captures(line) else { continue };
-    if kept.iter().any(|entry| entry.slug == found[1]) {
-      continue;
-    }
-    kept.push(Entry {
-      slug: found[1].to_owned(),
-      scope: found.get(2).map(|tag| tag.as_str().to_owned()),
-      title: found[3].to_owned(),
-      position: kept.len(),
-    });
-  }
-  kept
-}
-
-/// A slug: one or more lowercase ASCII letters, digits and hyphens.
-pub fn is_slug(text: &str) -> bool {
-  !text.is_empty() && text.bytes().all(|b| b.is_ascii_lowercase() || b.is_ascii_digit() || b == b'-')
-}
-
-/// A room layer's opening tone line: `tone:`, spaces or tabs, one name with no white space, spaces or tabs,
-/// then the end of the line.
-static TONE: LazyLock<Regex> =
-  LazyLock::new(|| Regex::new(r"^tone:[ \t]*(\S+)[ \t]*(?:\n|$)").expect("a tone line"));
-
-/// The tone a room layer's text opens with, read from the text trimmed as its reader trims it; `None`
-/// where it has no tone line.
-pub fn tone(room: &str) -> Option<String> {
-  TONE.captures(room.trim()).map(|found| found[1].to_owned())
 }
 
 /// A placeholder: two opening braces, a key of dotted lowercase words, two closing braces.

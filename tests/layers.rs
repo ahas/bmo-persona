@@ -5,7 +5,8 @@ mod support;
 
 use std::path::Path;
 
-use support::{ROOT, files_under, read, shown, tone};
+use bmo_persona::content::{room_layer, tone};
+use support::{ROOT, files_under, read, shown};
 
 /// The tone layers: every layer file beside the base layer, named by its tone.
 fn tone_layers() -> Vec<String> {
@@ -50,4 +51,12 @@ fn the_tone_line_reads_as_the_format_says() {
   assert_eq!(tone("# A room\ntone: warm"), None);
   assert_eq!(tone("tone: two words"), None);
   assert_eq!(tone("Tone: warm"), None);
+}
+
+#[test]
+fn a_room_layer_is_what_follows_its_tone_line() {
+  assert_eq!(room_layer("tone: warm\n\n# A room\n"), "# A room");
+  assert_eq!(room_layer("\n  tone:\tnone \nThe room"), "The room");
+  assert_eq!(room_layer("  # A room\ntone: warm\n"), "# A room\ntone: warm");
+  assert_eq!(room_layer("tone: bmo"), "");
 }

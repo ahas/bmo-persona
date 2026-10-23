@@ -26,9 +26,10 @@ fn hangul_lines(path: &str, text: &str) -> Vec<String> {
     .collect()
 }
 
-/// The code: the tests, and every manifest and declaration at the root.
+/// The code: the installer, the tests, and every manifest and declaration at the root.
 fn code_files() -> Vec<PathBuf> {
-  let mut files = files_under(&Path::new(ROOT).join("tests"));
+  let mut files = files_under(&Path::new(ROOT).join("src"));
+  files.extend(files_under(&Path::new(ROOT).join("tests")));
   for entry in fs::read_dir(ROOT).expect("the repository root is readable") {
     let path = entry.expect("an entry is readable").path();
     if path.is_file() && path.extension().is_some_and(|ext| ext == "toml" || ext == "json") {

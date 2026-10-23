@@ -20,7 +20,7 @@ What this repository holds, where each file comes from, and what was changed on 
 | Content files | 86 | `git ls-tree` at the source commit, as above |
 | of which persona layers (`prompts/persona/` → `layers/`) | 7 | the same listing |
 | of which lore (`docs/lore/` → `lore/`) | 79 | the same listing: 5 top-level files and 74 chunks |
-| Crates | 0 | #301: a data repository has no code |
+| Crates | 0 | #301: a data repository has no code; the installer in `src/` is this repository's own (`boundary.md`, 「The brain file」) |
 | Packages | 0 | #301, as above |
 | Policy files | 0 | the reader trace of this item: the `[persona]` section of `chat-line.toml` (layer headers) belongs to the chat receiver, and `companions.toml` (the companion persona piece and its length limit) to the agency |
 | Tests | 0 | the reader trace of this item: every old test touching these files tests a reader, and each reader goes to the unit that owns it (`boundary.md`); this repository's own tests in `tests/` guard the format those readers rely on (`format.md`) |

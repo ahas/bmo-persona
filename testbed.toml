@@ -1,10 +1,11 @@
 # How the testbed tests and checks this repository, in the testbed's declaration format. The repository is
-# content with its checks; it builds no binary and deploys no unit of its own (`docs/boundary.md`).
+# content with its installer and its checks; it deploys no unit of its own (`docs/boundary.md`).
 
 testbed = 0
 name = "bmo-persona"
 
-# The one Cargo package at the root, whose tests in `tests/` hold the content to `docs/format.md`.
+# The one Cargo package at the root: the installer, and the tests in `tests/` that hold the content to
+# `docs/format.md`.
 [test]
 languages = ["cargo"]
 
