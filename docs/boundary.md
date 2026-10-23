@@ -77,11 +77,11 @@ shape 1.
 
 | Unit | What it receives | From where | How |
 |---|---|---|---|
-| bmo-receiver | the base, tone and room layers | its own data tree, `prompts/persona/` | its room module reads the base layer for the chat line's system prompt, and a room's file, tone line first, for the tone and room layers of each turn (`format.md`) |
+| bmo-receiver | the tone and room layers | its own data tree, `prompts/persona/` | its room module reads a room's file, tone line first, for the tone and room layers of each turn (`format.md`); it reads no base layer and hands no persona to the agency |
 | bmo-receiver | notice of a changed layer or lore piece | its own data tree, `prompts/persona/` and `docs/lore/` | its reload verb watches both trees as documents, and names a changed lore index or chunk to the sessions that hold it |
-| bmo-agency | the base persona | the receiver, with each turn | `POST /session/turn` carries it as `basePersona` in the turn's context; the agency holds no persona and no lore of its own |
+| bmo-agency | the base persona | bmo-brain | at a chat launch it asks the agent's brain for its persona rendered of the layer named `persona` alone (`GET /brains/{brainId}/persona?layers=persona`), fills the placeholders from the deployment's values file, and ends the system prompt with it; the agency holds no persona and no lore of its own |
 | bmo-brain | the persona pieces and the lore pieces, as a brain file | the installer, run by the operator | `POST /brains/{brainId}/injections` with the file as the body (「The brain file」); the brain keeps each piece as a memory, body and all |
-| bmo-gate | lore pieces for a room that reads the lore | bmo-brain | its `system-documents` gate offers the `lore` memories the brain keeps, by their layers, beside the system's own reference documents |
+| bmo-gate | lore pieces for a room that reads the lore | bmo-brain | its `system-documents` gate reads the `lore` memories the brain keeps, one library a layer, and offers them beside the system's own reference documents |
 | bmo-web | the persona as a document root | the unit that serves it | the documents viewer lists the persona root as another unit's, unavailable until a unit serves it as whole documents; it reads no folder by path |
 
 - **Another chat agent's persona** is kept by that agent's own persona repository. This repository does not
@@ -89,12 +89,8 @@ shape 1.
 
 ## Open for the switch-over
 
-- **The lore reaches the brain only by injection.** In the source tree, the fragment editors read the lore
-  index and hand its entries to the fragment table, and the reference road offers the lore library to a room
-  whose tone reads it. Neither has a home in the new units; the installer's brain file takes their place.
-  Until the operator injects it, the brain holds no lore rows, and the gate offers no lore.
 - **The web viewer expects the persona root from the agency,** but the agency holds no persona: the layers
-  sit in the receiver's data tree. The switch-over names the unit that serves them as whole documents.
+  sit in the brain, which serves them as rows. The brain screen the console is to gain shows them there.
 
 ## Where the source tree's readers go
 
