@@ -4,7 +4,7 @@
 [package]
 name = "bmo-persona"
 description = "The persona layers and the lore library, as files, with the checks that hold them to their format."
-version = "0.1.1"
+version = "0.2.0"
 edition = "2024"
 license = "MIT"
 publish = false
