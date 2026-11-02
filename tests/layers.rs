@@ -1,7 +1,7 @@
 //! The persona layers: the base layer is there, and every room layer's tone line names a tone layer that
 //! exists, or none.
 
-mod support;
+use crate::support;
 
 use std::path::Path;
 

@@ -1,7 +1,7 @@
 //! Dependencies: every one a registry crate. None comes by path or from a git source, and none is another
 //! unit's crate; the repository depends on no other unit, not even the base libraries.
 
-mod support;
+use crate::support;
 
 use support::read;
 use toml::{Table, Value};

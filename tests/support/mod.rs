@@ -1,9 +1,6 @@
 //! What the tests share: the root, the walk over the repository's files, and the placeholder's syntax. The
 //! rest of the content's own syntax is read by the library the installer reads it with.
 
-// Each test file is its own crate and uses only part of this module.
-#![allow(dead_code)]
-
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::sync::LazyLock;

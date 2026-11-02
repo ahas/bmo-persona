@@ -1,7 +1,7 @@
 //! The lore index and its chunks: every entry has its chunk, every chunk has its entry, and no slug is
 //! listed twice or breaks the slug rule.
 
-mod support;
+use crate::support;
 
 use std::collections::BTreeSet;
 use std::path::Path;

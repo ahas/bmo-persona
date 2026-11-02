@@ -2,7 +2,7 @@
 //! (private or public), web address or host name, home path or account handle in the content or the
 //! documents. The check goes by pattern alone: no list of names is kept in the repository.
 
-mod support;
+use crate::support;
 
 use std::path::Path;
 use std::sync::LazyLock;

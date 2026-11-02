@@ -1,6 +1,6 @@
 //! No Hangul in code or tests. The content keeps its own language and is not read here.
 
-mod support;
+use crate::support;
 
 use std::fs;
 use std::path::{Path, PathBuf};

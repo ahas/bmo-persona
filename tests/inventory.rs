@@ -1,7 +1,7 @@
 //! The content tree is the inventory: every file the inventory maps stands in the tree once, and the tree
 //! holds no file the inventory does not map.
 
-mod support;
+use crate::support;
 
 use std::collections::BTreeSet;
 

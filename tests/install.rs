@@ -2,7 +2,7 @@
 //! and per index entry, its layers in their order, and the same keys every time it runs
 //! (`docs/boundary.md`, 「The brain file」).
 
-mod support;
+use crate::support;
 
 use std::collections::BTreeMap;
 use std::fs;

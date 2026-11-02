@@ -15,7 +15,7 @@ languages = ["cargo"]
 # is the lines holding such a letter allowed per code file, whether written as itself or named by an
 # escape; it allows none. A code point is written as a number, which names no letter. The content is no
 # code and keeps its own language.
-quick = ["layout", "dependencies", "korean", "dashes"]
+quick = ["layout", "dependencies", "korean", "dashes", "cargo-profile"]
 korean_ledger = "korean-ledger.json"
 # The repository depends on no other unit, the base libraries included.
 base_libraries = []

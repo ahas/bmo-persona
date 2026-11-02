@@ -1,7 +1,7 @@
 //! Placeholders: only the documented keys appear, room keys only in room layers, none in the lore, and no
 //! brace pair that is not a whole placeholder.
 
-mod support;
+use crate::support;
 
 use std::sync::LazyLock;
 
