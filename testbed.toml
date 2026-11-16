@@ -20,16 +20,7 @@ korean_ledger = "korean-ledger.json"
 # The repository depends on no other unit, the base libraries included.
 base_libraries = []
 
-[[check.step]]
-id = "check"
-command = "cargo check --all-targets"
-lane = "wide"
-
-[[check.step]]
-id = "clippy"
-command = "cargo clippy --all-targets -- -D warnings"
-lane = "wide"
-
-[[check.step]]
-id = "fmt"
-command = "cargo fmt --check"
+# No `[[check.step]]` is declared: the testbed's Cargo workspace check already runs `cargo fmt --check`
+# and `cargo clippy --all-targets` and the change check runs `cargo check` for every crate a change marks,
+# in the shared build folder, so a declared `sh -c` step would compile cold on every deployment and also
+# run on deployments that touch no Rust.
