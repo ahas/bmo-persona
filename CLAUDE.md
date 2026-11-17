@@ -43,10 +43,6 @@ These rules hold every change to this repository.
 - One Cargo package at the root holding the installer and the checks, no other build tool's manifest,
   and no directory named after its parent; the layout check in `tests/` holds these.
 - The content lives in `layers/` and `lore/`; the installer lives in `src/`; the checks live in `tests/`.
-- **`.graph/` is the code dependency graph**, written only by `bmo graph` in this checkout. A change that
-  adds, moves or removes a node's files brings its node up to date in the checkout. Its area files are
-  generated and untracked, so a fresh checkout builds them again, while `settings.toml` is the repository's
-  configuration and stays tracked.
 
 ## The stages of a change
 

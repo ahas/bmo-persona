@@ -16,7 +16,6 @@ it as a brain file for the chat agent's brain.
 | `src/` | The installer: the content read as `docs/format.md` states it, written as a brain file |
 | `tests/` | The checks that hold the content to its format and the repository to its rules, and the installer's test |
 | `docs/` | The canonical statements of the format, the boundary and the inventory |
-| `.graph/` | The code dependency graph: one node per feature with its files and what it reads, written only by `bmo graph` |
 
 At the root stand the Cargo manifest of the installer and the checks, the version, `testbed.toml` with its
 Korean ledger, `rustfmt.toml`, the MIT `LICENSE` and `CLAUDE.md`.
