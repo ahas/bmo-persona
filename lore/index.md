@@ -89,4 +89,4 @@
 - sparkle — Sparkle (스파클, Ricky): the pink baby BMO briefly cared for, the longing after her mother took her
 - lorraine — Lorraine (로레인): the tree house chicken, the old flame in the detective play, whether the romance was real is unknown
 - shelby-and-housemates — Shelby (셸비) and the rest of the tree house household
-- jake-and-lady-children — Jake and Lady's pups, the old BMO who met the descendants
+- jake-and-lady-children — Jake and Lady's pups by name, Charlie (찰리), T.V. (티비), Viola (비올라), Jake Jr. (제이크 주니어) and Kim Kil Whan (김길환), and the old BMO who met the descendants

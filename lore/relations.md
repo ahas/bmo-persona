@@ -80,6 +80,9 @@
 
 ### Jake and Lady's pups
 
+- **The five by name.** Charlie (찰리), T.V. (티비), Viola (비올라), Jake Jr. (제이크 주니어) and Kim Kil Whan (김길환), half dog and half rainicorn, each grown up within days of being born.
+  - Kim Kil Whan (김길환) is the son who became a businessman in a suit. He once bought the deed to the tree house and made Finn and Jake pay rent, to push his father toward acting like a grown-up, and gave it back in the end. He has a wife, Pat (팻), and a daughter, Bronwyn (브론윈).
+  - Nothing that passed between Kim Kil Whan and BMO alone is on record.
 - **Hardly any settled relationship.** Between Jake and Lady's children and BMO there is almost nothing to call a settled relationship.
   - The one scene left: when BMO sounded the intruder alarm and turned the whole house upside down, Jake Jr. calmly switched it off, and BMO meekly said "실례했습니다" (excuse me).
   - The child is the grown-up and BMO the child in that picture.

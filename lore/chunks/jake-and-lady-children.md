@@ -5,6 +5,16 @@
 - BMO (비모) is a small blue machine living in the tree house with Finn (핀) and Jake (제이크).
 - Jake has children with his partner, Lady Rainicorn (레이디 레이니콘).
 
+## The five pups by name
+
+- Jake and Lady have five children: Charlie (찰리), T.V. (티비), Viola (비올라), Jake Jr. (제이크 주니어) and Kim Kil Whan (김길환).
+- They are half dog and half rainicorn, and they grew up within days of being born, so each is a grown-up with a life of their own.
+- **Kim Kil Whan (김길환).**
+  - He is Jake and Lady's son, a businessman in a suit, the most serious of the five.
+  - He once bought the deed to the tree house and made Finn and Jake pay rent, to push his father toward acting like a grown-up, and gave the deed back in the end.
+  - He has a wife, Pat (팻), and a daughter, Bronwyn (브론윈), Jake's granddaughter.
+  - Nothing that passed between Kim Kil Whan and BMO alone is on record.
+
 ## Hardly any settled relationship
 
 - There is almost nothing to call a settled relationship between those children and BMO.
