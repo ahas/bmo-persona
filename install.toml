@@ -1,0 +1,119 @@
+# What installing the chat agent's persona and lore on a fresh machine needs, read by the testbed's install verb
+# (bmo-testbed's docs/install.md, 「The install declaration」). The repository deploys nothing: its after-steps place
+# the layers and the lore where their readers look and inject the brain file into the chat agent's brain
+# (docs/boundary.md, 「How a deployment places the content」 and 「The brain file」). They run once the brain is
+# live and the chat agent is registered, which makes its brain.
+
+install = 1
+
+[[needs]]
+program = "cargo"
+what = "Rust's Cargo, which builds and runs the installer that writes the brain file: `curl https://sh.rustup.rs -sSf | sh`."
+
+[[needs]]
+program = "cc"
+what = "A C toolchain, whose linker Cargo links the installer with: the `build-essential` package."
+
+[[needs]]
+check = "python3 -c 'import tomllib'"
+what = "Python 3.11 or later, which fills the layers' placeholders from the values file: the `python3` package."
+
+[[needs]]
+program = "curl"
+what = "curl, which the after-steps call the brain with: the `curl` package."
+
+[[needs]]
+program = "jq"
+what = "jq, which the after-steps read the brain's answers with: the `jq` package."
+
+[[input]]
+name = "persona.owner-name"
+what = "The name the chat agent calls its owner by in conversation, such as a first name or a nickname, chosen by the person installing; it fills the persona's owner name."
+file = "install/inputs/persona.owner-name"
+
+# The placeholders' values (docs/format.md, 「Placeholders」): the owner's name, and the owner's account id on the
+# chat service, which the receiver files the owner's words under. The agency fills the base persona from this file,
+# and the placing after-step fills the layers it places from it.
+[[settings]]
+file = "env/persona.toml"
+text = '''
+[owner]
+name = "{{input.persona.owner-name}}"
+id = "{{input.receiver.owner-sender}}"
+'''
+
+# Where the after-steps reach the chat agent's brain, and the keys the agency files that brain under.
+[[settings]]
+file = "install/persona-brain.env"
+text = '''
+BRAIN_ADDRESS=http://127.0.0.1:{{port.brain.server}}
+BRAIN_TOKEN={{token.brain.service}}
+BRAIN_AGENT_KEY={{value.agent.name}}
+'''
+
+# The base and tone layers placed under the data root's prompts/persona/, filled from the values file, and the lore
+# under docs/lore/, unchanged. A fresh machine maps no room to a room layer, so no room layer is placed.
+[[after]]
+id = "place"
+run = '''
+set -eu
+python3 -I - "$BMO_DATA_DIR" <<'PYTHON'
+import pathlib, re, shutil, sys, tomllib
+
+data = pathlib.Path(sys.argv[1])
+values = tomllib.loads((data / "env/persona.toml").read_text())
+
+def fill(match):
+    node = values
+    for word in match.group(1).split("."):
+        node = node[word]
+    return node
+
+def place(source, target):
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(re.sub(r"\{\{([a-z0-9-]+(?:\.[a-z0-9-]+)*)\}\}", fill, source.read_text()))
+
+persona = data / "prompts/persona"
+place(pathlib.Path("layers/base.md"), persona / "layers/base.md")
+for tone in sorted(pathlib.Path("layers").glob("*.md")):
+    if tone.name != "base.md":
+        place(tone, persona / tone.name)
+shutil.copytree("lore", data / "docs/lore", dirs_exist_ok=True)
+PYTHON
+'''
+done = '''
+set -eu
+test -s "$BMO_DATA_DIR/prompts/persona/layers/base.md"
+test -s "$BMO_DATA_DIR/docs/lore/index.md"
+for tone in layers/*.md; do
+  [ "$tone" = layers/base.md ] || test -s "$BMO_DATA_DIR/prompts/persona/$(basename "$tone")"
+done
+'''
+
+# The brain file written by the installer and injected into the chat agent's brain, found by the agent's key among
+# the agent brains.
+[[after]]
+id = "inject"
+run = '''
+set -eu
+env="$BMO_DATA_DIR/install/persona-brain.env"
+field() { sed -n "s/^$1=//p" "$env" | tail -n 1; }
+work="$(mktemp -d)"
+trap 'rm -rf "$work"' EXIT
+printf 'Authorization: Bearer %s\n' "$(field BRAIN_TOKEN)" > "$work/header"
+base="$(field BRAIN_ADDRESS)"
+brain="$(curl -sf -H @"$work/header" --get --data-urlencode kind=agent --data-urlencode "agentKey=$(field BRAIN_AGENT_KEY)" "$base/brains" | jq -er '.items[0].id')"
+cargo run --quiet --release --bin bmo-persona-install -- --root . --out "$work/persona.sqlite3"
+curl -sf -o /dev/null -H @"$work/header" -H 'Content-Type: application/vnd.sqlite3' --data-binary @"$work/persona.sqlite3" "$base/brains/$brain/injections"
+'''
+done = '''
+set -eu
+env="$BMO_DATA_DIR/install/persona-brain.env"
+field() { sed -n "s/^$1=//p" "$env" | tail -n 1; }
+header="$(mktemp)"
+trap 'rm -f "$header"' EXIT
+printf 'Authorization: Bearer %s\n' "$(field BRAIN_TOKEN)" > "$header"
+base="$(field BRAIN_ADDRESS)"
+brain="$(curl -sf -H @"$header" --get --data-urlencode kind=agent --data-urlencode "agentKey=$(field BRAIN_AGENT_KEY)" "$base/brains" | jq -er '.items[0].id')"
+curl -sf -H @"$header" "$base/brains/$brain/layers" | jq -e 'any(.items[]; .name == "persona")' > /dev/null
+'''

@@ -19,8 +19,7 @@ it as a brain file for the chat agent's brain.
 | `tests/` | The checks that hold the content to its format and the repository to its rules, and the installer's test |
 | `docs/` | The canonical statements of the format, the boundary and the inventory |
 
-At the root stand the Cargo manifest of the installer and the checks, the version, `testbed.toml` with its
-Korean ledger, `rustfmt.toml`, the MIT `LICENSE` and `CLAUDE.md`.
+At the root stand the Cargo manifest of the installer and the checks, the version, `testbed.toml` with its Korean ledger, `install.toml` (what installing the content on a fresh machine needs, read by the testbed's install verb), `rustfmt.toml`, the MIT `LICENSE` and `CLAUDE.md`.
 
 ## Documents
 

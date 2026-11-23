@@ -19,7 +19,7 @@
 | `tests/` | 내용을 형식에, 저장소를 규칙에 맞게 지키는 검사와 설치 프로그램의 테스트 |
 | `docs/` | 형식, 경계, 목록에 대한 정식 문서 |
 
-루트에는 설치 프로그램과 검사의 Cargo 매니페스트, 버전, 한국어 원장(ledger)을 동반한 `testbed.toml`,
+루트에는 설치 프로그램과 검사의 Cargo 매니페스트, 버전, 한국어 원장(ledger)을 동반한 `testbed.toml`, `install.toml`(새 기계에 설치할 때 필요한 것을 적은, 테스트베드의 install 동사가 읽는 선언),
 `rustfmt.toml`, MIT `LICENSE`, `CLAUDE.md`가 있습니다.
 
 ## 문서

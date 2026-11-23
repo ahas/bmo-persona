@@ -17,7 +17,7 @@
 | `tests/` | 使内容符合格式、仓库符合规则的检查，以及安装程序的测试 |
 | `docs/` | 关于格式、边界和清单的权威文档 |
 
-根目录下有安装程序和检查所用的 Cargo 清单、版本、附带韩文台账(ledger)的 `testbed.toml`、`rustfmt.toml`、MIT
+根目录下有安装程序和检查所用的 Cargo 清单、版本、附带韩文台账(ledger)的 `testbed.toml`、`install.toml`(说明在新机器上安装时需要什么,由测试台的 install 动词读取)、`rustfmt.toml`、MIT
 `LICENSE` 和 `CLAUDE.md`。
 
 ## 文档
