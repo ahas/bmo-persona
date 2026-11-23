@@ -1,3 +1,5 @@
+**English** | [한국어](README.ko.md) | [日本語](README.ja.md) | [简体中文](README.zh-CN.md)
+
 # bmo-persona
 
 The persona layers and the lore library of a chat agent, kept as files. The base layer is the persona the

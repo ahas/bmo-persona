@@ -31,7 +31,8 @@ These rules hold every change to this repository.
 - **The content keeps its own language.** The layers and the lore are written as their readers read
   them, Korean included, and are never translated here.
 - **Everything else is English:** the checks, their messages, the documents, `README.md`, this file,
-  commit messages and branch names. No Korean in code or tests; the Hangul check in `tests/` and the
+  commit messages and branch names. The README's Korean, Japanese and Chinese translations stand beside
+  `README.md`, which stays the original. No Korean in code or tests; the Hangul check in `tests/` and the
   testbed's `korean` check hold this.
 - **No personal data anywhere.** A personal value in the content is a placeholder whose value the
   deployment keeps (`docs/format.md`, 「Placeholders」); the personal-value check in `tests/` holds the
