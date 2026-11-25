@@ -32,8 +32,9 @@ At the root stand the Cargo manifest of the installer and the checks, the versio
 
 ## Version
 
-- **One version for the repository,** in semver. `VERSION` holds it and the package's version equals it.
-- **How a change moves it** is stated in `docs/boundary.md`, 「What this repository is」.
+- **The version is the set's,** read off the git tag `v<version>` when a release is made; no file in the
+  repository holds it, and the package's version is a placeholder that never moves.
+- **How a change counts toward the next release** is stated in `docs/boundary.md`, 「What this repository is」.
 
 ## Commands
 

@@ -31,8 +31,9 @@
 
 ## 版本
 
-- **整个仓库只有一个版本，** 采用 semver。`VERSION` 保存该版本，包的版本与之相同。
-- **变更如何推动版本**，见 `docs/boundary.md` 的「What this repository is」。
+- **版本属于整个套件，** 从发布时打上的 git 标签 `v<version>` 读取；仓库中没有任何文件保存版本，包的版本只是
+  一个永不变动的占位值。
+- **变更如何计入下一次发布**，见 `docs/boundary.md` 的「What this repository is」。
 
 ## 命令
 

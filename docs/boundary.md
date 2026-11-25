@@ -14,9 +14,10 @@ source tree's persona and lore goes.
   through its own API. They reach it as the brain file the installer writes and the operator injects. The
   repository knows the brain file's shape as the brain's boundary states it, and nothing else of the brain.
   Until the brain serves them to every reader, the copies below are how each unit receives the content.
-- **The content is versioned** by `VERSION`, in semantic versioning. A change to anything `format.md` states
-  is a major version; a change to the content alone is a minor one; a change to the installer or the checks
-  alone is a patch.
+- **The version is the set's,** the git tag `v<version>` a release puts on the commit (bmo-chat's
+  `docs/conventions.md`, 「Versions」); no file here holds it, and the package's version is a placeholder that
+  never moves. Toward the next release, a change to anything `format.md` states counts as a major step; a
+  change to the content alone as a minor one; a change to the installer or the checks alone as a patch.
 
 ## The brain file
 

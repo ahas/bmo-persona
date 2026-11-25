@@ -6,7 +6,7 @@ use crate::support;
 use std::fs;
 use std::path::Path;
 
-use support::{ROOT, is_skipped, read, shown};
+use support::{ROOT, is_skipped, shown};
 
 /// File names that declare a package or a project to some other build tool.
 const OTHER_MANIFESTS: [&str; 12] = [
@@ -41,36 +41,6 @@ fn manifests_and_nesting(dir: &Path, found: &mut Vec<String>) {
       found.push(format!("{} is a manifest besides the root's", shown(&path)));
     }
   }
-}
-
-/// `MAJOR.MINOR.PATCH`, each a number with no leading zero.
-fn is_semver(text: &str) -> bool {
-  let parts: Vec<&str> = text.split('.').collect();
-  parts.len() == 3
-    && parts.iter().all(|part| {
-      !part.is_empty()
-        && part.bytes().all(|b| b.is_ascii_digit())
-        && (part.len() == 1 || !part.starts_with('0'))
-    })
-}
-
-#[test]
-fn one_version_in_semver() {
-  let version = read("VERSION");
-  let version = version.trim_end();
-  assert!(is_semver(version), "VERSION is no semantic version: {version:?}");
-  let manifest: toml::Table = read("Cargo.toml").parse().expect("the manifest reads");
-  let package = manifest
-    .get("package")
-    .and_then(|package| package.get("version"))
-    .and_then(|v| v.as_str());
-  assert_eq!(package, Some(version), "the package's version is VERSION's");
-}
-
-#[test]
-fn the_semver_shape() {
-  assert!(is_semver("0.1.0") && is_semver("10.0.12"));
-  assert!(!is_semver("0.1") && !is_semver("01.0.0") && !is_semver("1.0.0-rc1") && !is_semver("1..0"));
 }
 
 #[test]
